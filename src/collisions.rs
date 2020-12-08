@@ -46,6 +46,7 @@ impl Block {
 
 #[cfg(test)]
 mod tests {
+
     use super::{Collider, Pi};
     #[test]
     fn one_digit() {
@@ -63,5 +64,10 @@ mod tests {
     fn nine_digits() {
         let expected = 314159265;
         assert_eq!(Collider { digits: 9 }.calculate(), expected);
+    }
+    #[test]
+    fn twenty_digits() {
+        let expected = 314159265;
+        assert_eq!(Collider { digits: 20 }.calculate(), expected);
     }
 }
