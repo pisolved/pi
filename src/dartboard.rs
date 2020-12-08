@@ -1,6 +1,6 @@
 use rand::Rng;
 
-use super::Pi;
+use super::*;
 
 pub struct DartBoard {
     iters: usize,
@@ -27,11 +27,7 @@ fn dart_did_land_on_board() -> bool {
 
 #[cfg(test)]
 mod tests {
-    fn rounded_to(input: f64, digit: i32) -> f64 {
-        let pow = 10f64.powi(digit);
-        (input * pow).round() / pow
-    }
-    use super::{DartBoard, Pi};
+    use super::{rounded_to, DartBoard, Pi};
     #[test]
     fn thousand_iters() {
         let actual = rounded_to(DartBoard { iters: 1_000 }.calculate(), 0);
@@ -39,9 +35,8 @@ mod tests {
     }
     #[test]
     fn million_iters() {
-        let expected = 3.1;
         let actual = rounded_to(DartBoard { iters: 1_000_000 }.calculate(), 1);
-        assert_eq!(actual, expected)
+        assert_eq!(actual, 3.1)
     }
 
     #[test]
